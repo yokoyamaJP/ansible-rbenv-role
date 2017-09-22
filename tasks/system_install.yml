@@ -68,7 +68,7 @@
   check_mode: no
 
 - name: install ruby versions for system
-  shell: bash -lc "rbenv install {{ item[1].version }}"
+  shell: bash -lc "RUBY_BUILD_CURL_OPTS=--tlsv1.2 rbenv install {{ item[1].version }}"
   become: yes
   with_nested:
     - '{{ rbenv_versions.results }}'

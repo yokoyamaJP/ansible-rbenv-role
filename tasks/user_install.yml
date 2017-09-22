@@ -88,7 +88,7 @@
   check_mode: no
 
 - name: install ruby {{ item[2].version }} for select users
-  shell: $SHELL -lc "{{ rbenv_root }}/bin/rbenv install {{ item[2].version }}"
+  shell: $SHELL -lc "RUBY_BUILD_CURL_OPTS=--tlsv1.2 {{ rbenv_root }}/bin/rbenv install {{ item[2].version }}"
   become: yes
   become_user: "{{ item[1] }}"
   with_nested:
